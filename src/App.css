@@ -30,3 +30,18 @@
     transform: rotate(360deg);
   }
 }
+
+.navbar {
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+#root {
+  height: 100vh;
+}
+
+.tablue {
+  padding: 20px;
+}

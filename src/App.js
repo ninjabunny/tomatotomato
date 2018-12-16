@@ -1,28 +1,87 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, {
+  Component
+} from 'react';
 import './App.css';
+import BottomNavigation from '@material-ui/core/BottomNavigation';
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import RestoreIcon from '@material-ui/icons/Restore';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+
+const cards = [{
+  name: 'tomato'
+}, {
+  name: 'mato'
+}, {
+  name: 'to'
+}, {
+  name: 'ma'
+}, ]
+const addCard = () => cards[Math.floor(Math.random() * 4)]
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+  defaultState = () => [cards[0], ...Array(3).fill(1).map(() => addCard())]
+  
 
-export default App;
+  state = {
+    value: 0,
+    tablue: [...this.defaultState()],
+  };
+
+
+  handleChange = (event, value) => {
+    this.setState({
+      value
+    });
+  };
+  render() {
+      const {
+        value,
+        tablue
+      } = this.state;
+      console.log(value)
+      return ( < div >
+        <
+        div className = "tablue" > {
+          tablue.map(({
+              name
+            }, index) => < span key = {
+              `${name}-${index}`
+            } > {
+              name
+            } < /span>)}</div >
+
+            <
+            BottomNavigation className = "navbar"
+            value = {
+              value
+            }
+            onChange = {
+              this.handleChange
+            }
+            showLabels >
+            <
+            BottomNavigationAction label = "Recents"
+            icon = { < RestoreIcon / >
+
+            }onClick = {() => this.setState({tablue: this.defaultState()})}
+            /> <
+            BottomNavigationAction label = "Favorites"
+            icon = { < FavoriteIcon / >
+            }
+            /> <
+            BottomNavigationAction label = "Nearby"
+            icon = { < LocationOnIcon / >
+            }
+            onClick = {
+              () => this.setState({
+                tablue: [...tablue, addCard()]
+              })
+            }
+            /> < /
+            BottomNavigation > < /div>
+          );
+        }
+      }
+
+      export default App;
