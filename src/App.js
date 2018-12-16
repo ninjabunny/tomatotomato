@@ -8,6 +8,8 @@ import RefreshIcon from '@material-ui/icons/Refresh';
 import CompareArrowsIcon from '@material-ui/icons/CompareArrows';
 import AddIcon from '@material-ui/icons/Add';
 
+const LONGEST_WORD_LENGTH = 6
+
 const cards = [{
   name: 'tomato'
 }, {
@@ -19,9 +21,10 @@ const cards = [{
 }, ]
 const addCard = () => cards[Math.floor(Math.random() * 4)]
 
+const SpanSpace = () => < span > &nbsp; < /span>
+
 class App extends Component {
   defaultState = () => [cards[0], ...Array(3).fill(1).map(() => addCard())]
-  
 
   state = {
     value: 0,
@@ -39,8 +42,7 @@ class App extends Component {
         value,
         tablue
       } = this.state;
-      console.log(value)
-      return ( < div>
+      return ( < div >
         <
         div className = "tablue" > {
           tablue.map(({
@@ -49,7 +51,7 @@ class App extends Component {
               `${name}-${index}`
             } > {
               name
-            } < /span>)}</div >
+            } < SpanSpace / > < /span>)}</div >
 
             <
             BottomNavigation className = "navbar"
@@ -64,10 +66,23 @@ class App extends Component {
             BottomNavigationAction label = "Reset"
             icon = { < RefreshIcon / >
 
-            }onClick = {() => this.setState({tablue: this.defaultState()})}
+            }
+            onClick = {
+              () => this.setState({
+                tablue: this.defaultState()
+              })
+            }
             /> <
             BottomNavigationAction label = "Condense"
             icon = { < CompareArrowsIcon / >
+            }
+            onClick = {
+              () =>
+              this.setState({
+                tablue: tablue.filter(({
+                  name
+                }, index, arr) => index ? name !== arr[index - 1].name : true)
+              })
             }
             /> <
             BottomNavigationAction label = "Add"
