@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/tomatotomato/precache-manifest.210db82fa69a7d114d16010b2abb1a50.js"
+  "/tomatotomato/precache-manifest.ca89b2960f5fedeb48097e3c7414ae72.js"
 );
 
 workbox.clientsClaim();
