@@ -4,9 +4,9 @@ import React, {
 import './App.css';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import RestoreIcon from '@material-ui/icons/Restore';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
+import RefreshIcon from '@material-ui/icons/Refresh';
+import CompareArrowsIcon from '@material-ui/icons/CompareArrows';
+import AddIcon from '@material-ui/icons/Add';
 
 const cards = [{
   name: 'tomato'
@@ -40,7 +40,7 @@ class App extends Component {
         tablue
       } = this.state;
       console.log(value)
-      return ( < div >
+      return ( < div>
         <
         div className = "tablue" > {
           tablue.map(({
@@ -61,17 +61,17 @@ class App extends Component {
             }
             showLabels >
             <
-            BottomNavigationAction label = "Recents"
-            icon = { < RestoreIcon / >
+            BottomNavigationAction label = "Reset"
+            icon = { < RefreshIcon / >
 
             }onClick = {() => this.setState({tablue: this.defaultState()})}
             /> <
-            BottomNavigationAction label = "Favorites"
-            icon = { < FavoriteIcon / >
+            BottomNavigationAction label = "Condense"
+            icon = { < CompareArrowsIcon / >
             }
             /> <
-            BottomNavigationAction label = "Nearby"
-            icon = { < LocationOnIcon / >
+            BottomNavigationAction label = "Add"
+            icon = { < AddIcon / >
             }
             onClick = {
               () => this.setState({

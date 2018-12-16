@@ -40,8 +40,14 @@
 
 #root {
   height: 100vh;
+  /*background-color:rgb(88,199,237);*/
+  background: radial-gradient(70% -40%, circle,  #58c7ed 0%,#58c7ed 47%,#58c7ed 65%,#16A3DA 47%,#16A3DA 48%)
 }
 
 .tablue {
   padding: 20px;
+}
+
+.circle{
+   background: radial-gradient(ellipse at center,  #f73134 0%,#ff0000 47%,#ff0000 47%,#23bc2b 47%,#23bc2b 48%);
 }
